@@ -21,13 +21,13 @@ class StdOutListener(StreamListener):
     def on_data(self, raw_data):
         #producer.send("taylorsville", raw_data.encode('utf-8'))
         #print (raw_data)
-        producer.send(topic="taylorsville", key=b'foo')
+        producer.send(topic="taylorsville", key=b"foo")
     def on_error(self, status_code):
         print status_code
 
 producer = KafkaProducer(bootstrap_servers="localhost:9092")
 l = StdOutListener()
 stream = Stream(auth,l)
-stream.filter(track="taylorsville", encoding='utf-8')
+stream.filter(track="taylor", encoding='utf-8')
 
 
